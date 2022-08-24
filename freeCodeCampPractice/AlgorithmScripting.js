@@ -81,23 +81,39 @@ function getIndexToIns(arr, num) {
     }
 
     let temp = arr.slice().sort();
+    let traversed = [];
     let prevIndex = 0;
     
     for (let i=0; i<temp.length; i++) {
-        if (temp[i] < num){
+        if (temp[i] === num) {
+            continue;
+        } else if (temp[i] < num){
             prevIndex = i;
         }else {
             continue;
         }
     }
 
+    console.log(traversed);
     if (prevIndex === 0) {
-        return temp.length + 1;
+        
+        if (arr.length !== 0){
+            return (prevIndex + 1);c
+        }
     }
-
-    console.log(prevIndex+1);
-    return prevIndex+1;
 }
 
 // getIndexToIns([10,20,30,40,50],35);
-getIndexToIns([3,10,5],3);
+// getIndexToIns([5,3,20,3],5);
+
+function getIndexToIns2(arr, num) {
+    arr.sort((a,b) => a-b);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === num) {
+            return i;
+        }
+    }
+    return arr.length;
+}
+
+getIndexToIns2([5,3,20,3], 5);
